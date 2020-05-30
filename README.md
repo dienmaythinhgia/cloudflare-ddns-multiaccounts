@@ -52,7 +52,7 @@ GET request call
 
 *Call examples to update a single record "example.com" . To do this, a file config/entriesmust exist in the folder`example.com.php`
 
-CRON task
+CRON task: ``crontab -e``
 
 ``*/5 * * * * php /home/dns/cloudflare-ddns-multiaccounts/update.php --token="startup_token" --entry="example.com"``
 
@@ -65,7 +65,7 @@ Also in the folder ``serveris`` a script to get the current IP address using an 
 
 # Briefly:
 1. Download the script as a ZIP archive or run: ``git clone https://github.com/prog-it/cloudflare-ddns-multiaccounts.git``
-2.Go to the script folder: ``cd cloudflare-ddns-multiaccounts``
+2. Go to the script folder: ``cd cloudflare-ddns-multiaccounts``
 3. Create the main config file "config/config.php: ``cp config/config.php.sample config/config.php``. The default settings are optimal, but can be changed to your own. There are detailed comments in the file
 4. Create the first file with the settings for DNS update domain records: "config/entries/entry1.php": ``cp config/entries/entry.php.sample config/entries/entry1.php``. Set the parameters in this file, it has detailed comments. You can create several such files (with different names), each with its own parameters for updating DNS records
 5. Create a CRON IP update task. Instead of startup_token, specify the CRON launch token from the config file (located at the very bottom)
