@@ -63,7 +63,7 @@ GET request call
 Also in the folder ``serveris`` a script to get the current IP address using an HTTP request. This script can be placed on your server and add the URL of this script to the main config file. For example: ``http://example.com/ip.php.`` If you call the script with a parameter ``?raw``, it will return only the IP-address, for example:``http://example.com/ip.php?raw``.
 
 
-#Briefly:
+# Briefly:
 1. Download the script as a ZIP archive or run: ``git clone https://github.com/prog-it/cloudflare-ddns-multiaccounts.git``
 2.Go to the script folder: ``cd cloudflare-ddns-multiaccounts``
 3. Create the main config file "config/config.php: ``cp config/config.php.sample config/config.php``. The default settings are optimal, but can be changed to your own. There are detailed comments in the file
@@ -73,11 +73,11 @@ Also in the folder ``serveris`` a script to get the current IP address using an 
 ``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
 
 
-##Some features
+## Some features
 If several IP addresses are used for DNS records (for example: my.computer.example.com), then only the first one will be updated with IP
 
 
-##System requirements
+## System requirements
 -PHP 5.4 and higher
 -PHP libraries: cURL, php-mod-tokenizer (PHP7 - php7-mod-tokenizer, PHP5 - php5-mod-tokenizer)
 -DNS lookup (dig) utility, if the method of obtaining IP is chosen - "dig"
