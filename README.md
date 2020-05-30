@@ -46,13 +46,13 @@ CRON task
 
 ``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
 
-Вызов GET-запросом
+GET request call
 
 ``http://example.com/cloudflare-ddns-multiaccounts/update.php?token=startup_token``
 
-*Примеры вызова для обновления одной записи "example.com"*. Для этого в папке `config/entries` должен существовать файл `example.com.php`
+*Call examples to update a single record "example.com" . To do this, a file config/entriesmust exist in the folder`example.com.php`
 
-CRON-задача
+CRON task
 
 ``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token" --entry="example.com"``
 
@@ -60,31 +60,30 @@ GET request call
 
 ``http://example.com/cloudflare-ddns-multiaccounts/update.php?token=startup_token&entry=example.com``
 
-Также в папке `server` находится скрипт для получения текущего IP-адреса с помощью HTTP-запроса. Этот скрипт можно разместить на своем сервере и добавить URL этого скрипта в основной конфиг-файл. 
-Например: ``http://example.com/ip.php``. Если вызвать скрипт с параметром ``?raw``, то он вернет только IP-адрес, например: ``http://example.com/ip.php?raw``.
+Also in the folder ``serveris`` a script to get the current IP address using an HTTP request. This script can be placed on your server and add the URL of this script to the main config file. For example: ``http://example.com/ip.php.`` If you call the script with a parameter ``?raw``, it will return only the IP-address, for example:``http://example.com/ip.php?raw``.
 
 
-Кратко:
-1. Скачать скрипт как ZIP-архив или выполнить: ``git clone https://github.com/prog-it/cloudflare-ddns-multiaccounts.git``
-2. Перейти в папку со скриптом: ``cd cloudflare-ddns-multiaccounts``
-3. Создать основной конфиг-файл "config/config.php: ``cp config/config.php.sample config/config.php``. Настройки по умолчанию оптимальны, но можно изменить на свои. В файле есть подробные комментарии
-4. Создать первый файл с параметрами для обновления DNS записей домена: "config/entries/entry1.php": ``cp config/entries/entry.php.sample config/entries/entry1.php``. Настроить параметры в этом файле, в нем есть подробные комментарии. Таких файлов можно создавать несколько (с разными именами), в каждом свои параметры для обновления DNS записей
-5. Создать CRON задачу обновления IP. Вместо startup_token указать токен запуска CRON из конфиг-файла (находится в самом низу)
+Briefly:
+1. Download the script as a ZIP archive or run: ``git clone https://github.com/prog-it/cloudflare-ddns-multiaccounts.git``
+2.Go to the script folder: ``cd cloudflare-ddns-multiaccounts``
+3. Create the main config file "config/config.php: ``cp config/config.php.sample config/config.php``. The default settings are optimal, but can be changed to your own. There are detailed comments in the file
+4. Create the first file with the settings for DNS update domain records: "config/entries/entry1.php": ``cp config/entries/entry.php.sample config/entries/entry1.php``. Set the parameters in this file, it has detailed comments. You can create several such files (with different names), each with its own parameters for updating DNS records
+5. Create a CRON IP update task. Instead of startup_token, specify the CRON launch token from the config file (located at the very bottom)
 
 ``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
 
 
-## Некоторые особенности
-- Если для DNS записи (Например: my.computer.example.com) используется несколько IP адресов, то будет обновлен IP только у первой по счету
+#Some features
+If several IP addresses are used for DNS records (for example: my.computer.example.com), then only the first one will be updated with IP
 
 
-## Системные требования
-- PHP 5.4 и выше
-- PHP библиотеки: cURL, php-mod-tokenizer (PHP7 - php7-mod-tokenizer, PHP5 - php5-mod-tokenizer)
-- Утилита DNS lookup (dig), если выбран способ получения IP - "dig"
+#System requirements
+-PHP 5.4 and higher
+-PHP libraries: cURL, php-mod-tokenizer (PHP7 - php7-mod-tokenizer, PHP5 - php5-mod-tokenizer)
+-DNS lookup (dig) utility, if the method of obtaining IP is chosen - "dig"
 
 
-Если нашлись какие-либо баги или недоработки, то оставляйте свои заявки в разделе [**Issues**](https://github.com/prog-it/cloudflare-ddns-multiaccounts/issues)
+If you find any bugs or flaws, then leave your applications in the [Issues](https://github.com/prog-it/cloudflare-ddns-multiaccounts/issues)section
 
-Историю изменений можно посмотреть [здесь](https://github.com/prog-it/cloudflare-ddns-multiaccounts/releases). Текущая версия DDNS-клиента находится в файле: ``README.md``
+The history of changes can be found [here](https://github.com/prog-it/cloudflare-ddns-multiaccounts/releases). The current version of the DDNS client is in the file: ``README.md``
 
