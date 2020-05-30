@@ -1,6 +1,6 @@
 # Cloudflare DDNS-client v1.1.9
 
-DDNS client for  [Cloudflare](https://www.cloudflare.com/).
+DDNS client for [Cloudflare](https://www.cloudflare.com/).
 
 
 ## Key features
@@ -44,7 +44,7 @@ Call examples to update all records
 
 CRON task
 
-``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
+``*/5 * * * * php /home/dns/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
 
 GET request call
 
@@ -54,7 +54,7 @@ GET request call
 
 CRON task
 
-``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token" --entry="example.com"``
+``*/5 * * * * php /home/dns/cloudflare-ddns-multiaccounts/update.php --token="startup_token" --entry="example.com"``
 
 GET request call
 
@@ -70,12 +70,10 @@ Also in the folder ``serveris`` a script to get the current IP address using an 
 4. Create the first file with the settings for DNS update domain records: "config/entries/entry1.php": ``cp config/entries/entry.php.sample config/entries/entry1.php``. Set the parameters in this file, it has detailed comments. You can create several such files (with different names), each with its own parameters for updating DNS records
 5. Create a CRON IP update task. Instead of startup_token, specify the CRON launch token from the config file (located at the very bottom)
 
-``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
-
+``*/5 * * * * php /home/dns/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
 
 ## Some features
-If several IP addresses are used for DNS records (for example: my.computer.example.com), then only the first one will be updated with IP
-
+If several IP addresses are used for DNS records (for example: ``my.computer.example.com``), then only the first one will be updated with IP
 
 ## System requirements
 - PHP 5.4 and higher
@@ -83,7 +81,7 @@ If several IP addresses are used for DNS records (for example: my.computer.examp
 - DNS lookup (dig) utility, if the method of obtaining IP is chosen - "dig"
 
 
-If you find any bugs or flaws, then leave your applications in the [**Issues**](https://github.com/prog-it/cloudflare-ddns-multiaccounts/issues) section
+-If you find any bugs or flaws, then leave your applications in the [**Issues**](https://github.com/prog-it/cloudflare-ddns-multiaccounts/issues) section
 
-The history of changes can be found [here](https://github.com/prog-it/cloudflare-ddns-multiaccounts/releases). The current version of the DDNS client is in the file: ``README.md``
+-The history of changes can be found [here](https://github.com/prog-it/cloudflare-ddns-multiaccounts/releases). The current version of the DDNS client is in the file: ``README.md``
 
