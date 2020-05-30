@@ -29,7 +29,7 @@ The ability to add multiple URL services to obtain the current IP address for th
 The ability to specify the number of attempts to obtain the current IP address for the HTTP method. If the IP could not be obtained, a different URL service will be selected
 
 
-## КHow to use
+## How to use
 The main script settings are in the file config/config.php, this file must be created. To do this, open the file ``config/config.php.sample``, configure the settings in it and save as ``config/config.php.``
 
 The folder ``config/entries``should contain files with domain parameters for updating their DNS records. There can be several such files, you can specify an arbitrary name, the main thing is that the extension has files ``.php``. For example: ``domain1.com.php``
