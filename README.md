@@ -1,49 +1,48 @@
 # Cloudflare DDNS-client v1.1.9
 
-DDNS-клиент для сервиса [Cloudflare](https://www.cloudflare.com/).
+DDNS client for  [Cloudflare](https://www.cloudflare.com/).
 
 
-## Основные возможности
-- Работа с несколькими аккаунтами Cloudflare
-- Работа с несколькими доменами. Например: domain1.com, domain2.com
-- Обновление нескольких DNS записей для домена
-- Настройка параметров для каждой DNS-записи:
-	- Time to Live (TTL)
-	- Режим проксирования запросов
-- Поддержка IPv4 и IPv6
-- Выбор режима обновления:
-	- Только IPv4
-	- Только IPv6
-	- IPv4 и IPv6 одновременно
-- Выбор режима получения текущего IP: 
-	- HTTP-запрос
-	- DNS lookup (dig)
-- При отсутствии DNS записи, она будет создана
-- Выбор режима логирования событий: 
-	- Полный
-	- Краткий
-	- Отключен
-- Автоочистка лог-файла. При превышении заданного размера, файл будет очищен
-- Возможность запуска обновления по CRON или GET-запросом (Например с помощью утилиты WGET)
-- Возможность добавить несколько URL-сервисов получения текущего IP адреса для HTTP-метода. URL сервиса будет выбран случайным образом
-- Возможность указать количество попыток получения текущего IP адреса для HTTP-метода. Если IP получить не удалось, будет выбран другой URL-сервиса
+## Key features
+Work with multiple Cloudflare accounts
+Work with multiple domains. For example: domain1.com, domain2.com
+Updating multiple DNS records for a domain
+Configure settings for each DNS record:
+Time to Live (TTL)
+Request Proxy Mode
+IPv4 and IPv6 Support
+Select update mode:
+IPv4 only
+IPv6 only
+IPv4 and IPv6 at the same time
+Selecting the mode for obtaining the current IP:
+HTTP request
+DNS lookup (dig)
+If there is no DNS record, it will be created.
+Choosing an event logging mode:
+Full
+Brief
+Disconnected
+Auto clean log file. If the specified size is exceeded, the file will be cleared
+Ability to start updates by CRON or GET request (for example, using the WGET utility)
+The ability to add multiple URL services to obtain the current IP address for the HTTP method. Service URL will be randomly selected
+The ability to specify the number of attempts to obtain the current IP address for the HTTP method. If the IP could not be obtained, a different URL service will be selected
 
 
-## Как использовать
-Основные настройки скрипта находятся в файле `config/config.php`, этот файл необходимо создать. Для этого нужно открыть файл `config/config.php.sample`, настроить в нем параметры и сохранить как `config/config.php`.
+## КHow to use
+The main script settings are in the file config/config.php, this file must be created. To do this, open the file ``config/config.php.sample``, configure the settings in it and save as ``config/config.php.``
 
+The folder ``config/entries``should contain files with domain parameters for updating their DNS records. There can be several such files, you can specify an arbitrary name, the main thing is that the extension has files ``.php``. For example: ``domain1.com.php``
 
-В папке `config/entries` должны располагаться файлы с параметрами доменов для обновления их DNS-записей. Таких файлов может быть несколько, можно задавать произвольное имя, главное, чтобы расширение у файлов было `.php`. Например: domain1.com.php
+The folder ``config/entries`` contains a file entry.php.sample, as an example for creating such a file with parameters. It must be open, set up parameters and save with a random name, for example: ``config/entries/domain1.com.php.``
 
-В папке `config/entries` находится файл `entry.php.sample`, как пример для создания такого файла с параметрами. Его необходимо открыть, настроить в нем параметры и сохранить с произвольным именем, например: `config/entries/domain1.com.php`.
+When calling the script, ``update.php`` you can add the entry parameter. This option allows you to update only one entry from a folder ``config/entries``, and not all at once. If you call the script without this parameter, all records that are in the folder will be updated ``config/entries``
 
-При вызове скрипта `update.php` можно добавить параметр entry. Этот параметр позволяет обновить только одну запись из папки `config/entries`, а не все сразу. Если вызвать скрипт без этого параметра, будут обновлены все записи, которые находятся в папке `config/entries`
+To automatically start updating the IP address, you can create a CRON task or call the script with a ``update.php`` GET request with the token (and entry) parameter. Instead of startup_token, specify the launch token from the main config file (located at the very bottom)
 
-Для автоматического запуска обновления IP-адреса можно создать CRON-задачу или вызвать скрипт `update.php` GET-запросом с параметром token (и entry). Вместо startup_token указать токен запуска из основного конфиг-файла (находится в самом низу)
+Call examples to update all records
 
-*Примеры вызова для обновления всех записей*
-
-CRON-задача
+CRON task
 
 ``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
 
@@ -57,7 +56,7 @@ CRON-задача
 
 ``*/5 * * * * php /path/to/cloudflare-ddns-multiaccounts/update.php --token="startup_token" --entry="example.com"``
 
-Вызов GET-запросом
+GET request call
 
 ``http://example.com/cloudflare-ddns-multiaccounts/update.php?token=startup_token&entry=example.com``
 
