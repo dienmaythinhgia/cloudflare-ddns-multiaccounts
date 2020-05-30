@@ -83,7 +83,7 @@ If several IP addresses are used for DNS records (for example: my.computer.examp
 - DNS lookup (dig) utility, if the method of obtaining IP is chosen - "dig"
 
 
-If you find any bugs or flaws, then leave your applications in the [**Issues**](https://github.com/prog-it/cloudflare-ddns-multiaccounts/issues)section
+If you find any bugs or flaws, then leave your applications in the [**Issues**](https://github.com/prog-it/cloudflare-ddns-multiaccounts/issues) section
 
 The history of changes can be found [here](https://github.com/prog-it/cloudflare-ddns-multiaccounts/releases). The current version of the DDNS client is in the file: ``README.md``
 
