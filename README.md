@@ -42,7 +42,7 @@ To automatically start updating the IP address, you can create a CRON task or ca
 
 Call examples to update all records
 
-CRON task
+CRON task: ``crontab -e``
 
 ``*/5 * * * * php /home/dns/cloudflare-ddns-multiaccounts/update.php --token="startup_token"``
 
